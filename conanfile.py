@@ -3,14 +3,12 @@ from conan.tools.cmake import CMake, CMakeToolchain, CMakeDeps
 from conan.tools.files import copy, rmdir
 import os
 
-class CryptoGuardConan(ConanFile):
-    name = "crypto_guard"
-    version = "1.0.0"
+class BookDBConan(ConanFile):
+    name = "books_db"
+    version = "0.0.1"
     settings = "os", "compiler", "build_type", "arch"
     
     def requirements(self):
-        self.requires("openssl/3.1.1")
-        self.requires("boost/1.83.0")
         self.requires("gtest/1.13.0")
         self.tool_requires("cmake/3.30.0")
     

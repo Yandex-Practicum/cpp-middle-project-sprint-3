@@ -7,16 +7,11 @@
         {
             "type": "lldb",
             "request": "launch",
-            "name": "Launch CryptoGuard",
-            "program": "${workspaceFolder}/build/CryptoGuard",
+            "name": "Launch BookDB",
+            "program": "${workspaceFolder}/build/BookDB",
             "args": [
-                "-i",
-                "input.txt",
-                "--command",
-                "checksum"
             ],
             "cwd": "${workspaceFolder}/build"
         }
-
     ]
 }

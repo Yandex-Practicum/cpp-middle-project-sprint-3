@@ -1,31 +1,30 @@
-# Base image
-# Date: 2025-01-27
-FROM ubuntu@sha256:3afff29dffbc200d202546dc6c4f614edc3b109691e7ab4aa23d02b42ba86790
+FROM archlinux@sha256:fcc0e315ba72175e77f5c351f1a79ff05fe5548431e842924b7b7cddb8240c08
 
-# Update the package database and install required tools
-RUN apt-get update
-RUN apt-get install -y python3.12 python3-pip pipx git less vim sudo cmake make g++-14 clangd-19 libjemalloc-dev
+# Add core-testing repo
+RUN sed -i '/^#\[core-testing\]/s/^#//' /etc/pacman.conf && \
+    sed -i '/^\[core-testing\]$/,/^$/ s/^#\(Include = \/etc\/pacman\.d\/mirrorlist\)/\1/' /etc/pacman.conf
 
-# Update clangd and g++ versions to the latest ones
-RUN ln -s  /usr/bin/clangd-19 /usr/bin/clangd
-RUN ln -fs /usr/bin/g++-14 /usr/bin/g++
+RUN pacman -Syyu --noconfirm \
+    && pacman -Syyu --noconfirm git less vim sudo python-pipx wget which pkgconf cmake make ninja \
+    && pacman -Syyu --noconfirm core-testing/gcc
 
 # Create a non-root user 'dev'
 RUN useradd -ms /bin/bash dev \
     && echo "dev ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/dev \
     && chmod 0440 /etc/sudoers.d/dev
 
-# Switch to the 'dev' user
 USER dev
 
-RUN git config --global core.editor code
-
-# Install conan through pipx
 RUN pipx install conan
-RUN pipx ensurepath
+RUN pipx ensurepath && source ~/.bashrc
 
 # Copy conan profile
 COPY default /home/dev/.conan2/profiles/default
+
+RUN git config --global core.editor vim
+
+# Set the default working directory
+WORKDIR /home/dev
 
 # Set the default command
 CMD ["/bin/bash"]
