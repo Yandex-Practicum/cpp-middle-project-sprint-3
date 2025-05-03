@@ -22,16 +22,23 @@
 
 ## Сборка проекта и запуск тестов
 
-Данный репозиторий использует два инструмента:
+Данный репозиторий использует три инструмента:
 
 - **Conan** — свободный менеджер пакетов для C и C++ с открытым исходным кодом (MIT). Позволяет настраивать процесс сборки программ, скачивать и устанавливать сторонние зависимости и необходимые инструменты. Подробнее о Conan:
   - https://habr.com/ru/articles/884464
   - https://docs.conan.io/2.0/tutorial/consuming_packages/build_simple_cmake_project.html
   - https://docs.conan.io/2.0/tutorial/consuming_packages/the_flexibility_of_conanfile_py.html
+
 - **cmake** — генератор систем сборки для C и C++. Позволяет создавать проекты, которые могут компилироваться на различных платформах и с различными компиляторами. Подробнее о cmake:
   - https://dzen.ru/a/ZzZGUm-4o0u-IQlb
   - https://neerc.ifmo.ru/wiki/index.php?title=CMake_Tutorial
   - https://cmake.org/cmake/help/book/mastering-cmake/cmake/Help/guide/tutorial/index.html
+
+- **VS Code Dev Docker container** - Docker контейнер, который содержит полностью настроенное окружение для выполнение задания. Подробнее об этой функциональности:
+  - https://habr.com/ru/articles/822707/ - "Почти все, что вы хотели бы знать про Docker"
+  - https://code.visualstudio.com/docs/devcontainers/containers - официальная документация VS Code
+  - https://www.youtube.com/watch?v=p9L7YFqHGk4 - "Docker container for VS Code"
+  - https://www.youtube.com/watch?v=pg19Z8LL06w&t=174s&pp=ygUPRG9ja2VyY29udGFpbmVy - "Docker in 1 hour"
 
 ### Команды для сборки проекта
 
