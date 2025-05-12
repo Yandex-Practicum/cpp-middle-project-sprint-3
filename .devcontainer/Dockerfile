@@ -20,6 +20,7 @@ RUN pipx ensurepath && source ~/.bashrc
 
 # Copy conan profile
 COPY default /home/dev/.conan2/profiles/default
+RUN sudo chown -R dev:dev /home/dev/.conan2
 
 RUN git config --global core.editor vim
 
