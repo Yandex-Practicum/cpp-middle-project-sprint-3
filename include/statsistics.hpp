@@ -10,13 +10,9 @@
 
 #include <print>
 
-
 namespace bookdb {
 
 template <BookContainerLike T, typename Comparator = TransparentStringLess>
-auto buildAuthorHistogramFlat(const BookDatabase<T> &cont, Comparator comp = {}) {
-
-}
-
+auto buildAuthorHistogramFlat(const BookDatabase<T> &cont, Comparator comp = {}) {}
 
 }  // namespace bookdb

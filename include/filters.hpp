@@ -8,5 +8,4 @@
 
 namespace bookdb {
 
-
 }  // namespace bookdb

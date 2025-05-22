@@ -12,6 +12,7 @@ enum class Genre { Fiction, NonFiction, SciFi, Biography, Mystery, Unknown };
 
 constexpr Genre GenreFromString(std::string_view s) {
     // Ваш код здесь
+    return Genre::Unknown;
 }
 
 struct Book {
@@ -38,12 +39,12 @@ struct formatter<bookdb::Genre, char> {
         // clang-format off
         using bookdb::Genre;
         switch (g) {
-            case Fiction:        genre_str = "Fiction"; break;
-            case Mystery:        genre_str = "Mystery"; break;
-            case NonFiction:     genre_str = "NonFiction"; break;
-            case SciFi:          genre_str = "SciFi"; break;
-            case Biography:      genre_str = "Biography"; break;
-            case Unknown:        genre_str = "Unknown"; break;
+            case Genre::Fiction:    genre_str = "Fiction"; break;
+            case Genre::Mystery:    genre_str = "Mystery"; break;
+            case Genre::NonFiction: genre_str = "NonFiction"; break;
+            case Genre::SciFi:      genre_str = "SciFi"; break;
+            case Genre::Biography:  genre_str = "Biography"; break;
+            case Genre::Unknown:    genre_str = "Unknown"; break;
             default:
                 throw logic_error{"Unsupported bookdb::Genre"};
             }
@@ -56,6 +57,6 @@ struct formatter<bookdb::Genre, char> {
     }
 };
 
-    // Ваш код для std::formatter<Book> здесь
+// Ваш код для std::formatter<Book> здесь
 
 }  // namespace std

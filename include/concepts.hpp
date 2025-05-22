@@ -8,18 +8,18 @@
 namespace bookdb {
 
 template <typename T>
-concept BookContainerLike = ;
+concept BookContainerLike = true;
 
 template <typename T>
-concept BookIterator = ;
+concept BookIterator = true;
 
 template <typename S, typename I>
-concept BookSentinel = ;
+concept BookSentinel = true;
 
 template <typename P>
-concept BookPredicate = ;
+concept BookPredicate = true;
 
 template <typename C>
-concept BookComparator = ;
+concept BookComparator = true;
 
 }  // namespace bookdb

@@ -4,9 +4,6 @@
 
 namespace bookdb::comp {
 
-struct LessByAuthor {
-
-};
-
+struct LessByAuthor {};
 
 }  // namespace bookdb::comp
