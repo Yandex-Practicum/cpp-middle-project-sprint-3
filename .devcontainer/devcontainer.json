@@ -1,5 +1,5 @@
 {
-  "name": "Arch with GCC15",
+  "name": "Ubuntu25.04 with GCC15",
   "build": {
       "dockerfile": "./Dockerfile",
       "context": "."
@@ -14,5 +14,8 @@
         "ms-vscode.cmake-tools"
       ]
     }
-  }
+  },
+  "mounts": [
+    "source=${env:HOME}/.gitconfig,target=/etc/gitconfig,type=bind,consistency=cached"
+  ]
 }

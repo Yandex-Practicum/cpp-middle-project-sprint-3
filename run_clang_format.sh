@@ -1,8 +1,16 @@
 #!/bin/bash
 
 # Get the directory this script is located in
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+PROJECT_FOLDER=$( dirname "$(realpath "$0")" )
+cd $PROJECT_FOLDER || exit 1
 
-cd "$SCRIPT_DIR" || exit 1
+printf "\n\nPROJECT_FOLDER = ${PROJECT_FOLDER}\n\n"
 
-find . -type f \( -name "*.cpp" -o -name "*.hpp" \) -print0 | xargs -0 -I{} clang-format -i {} --Werror -style=file:.clang_format
+# Show errors
+printf "\nPrint all clang-format errors:\n"
+find . -type f \( -name "*.cpp" -o -name "*.hpp"  -o -name "*.h" \) -print0 | xargs -0 -I{} clang-format -i {} --dry-run --Werror -style=file:.clang-format
+
+# Fix errors
+printf "\nApplying fixes...\n"
+find . -type f \( -name "*.cpp" -o -name "*.hpp"  -o -name "*.h" \) -print0 | xargs -0 -I{} clang-format -i {} --Werror -style=file:.clang-format
+printf "\nDone\n"
